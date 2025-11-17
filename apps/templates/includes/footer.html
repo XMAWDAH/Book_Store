@@ -1,8 +1,16 @@
-{% with request.resolver_match.url_name as url_name %} 
-<div class="topnav">
-    <a href="{% url "books.index" %}">Home</a>
-    <a href="{% url "books.list_books" %}">List Books</a>
-    <a href="{% url "books.aboutus" %}">About</a>
-</div>
+<footer class="bg-dark text-white mt-5 py-4">
+  <div class="container-md text-center">
+    <h5 class="fw-bold mb-3">📚 My Library</h5>
+    <p class="mb-2">Discover, Read, and Share Amazing Books.</p>
 
-{% endwith %} 
+    <div class="mb-3">
+      <a href="#" class="text-white me-3 text-decoration-none">About</a>
+      <a href="#" class="text-white me-3 text-decoration-none">Contact</a>
+      <a href="#" class="text-white text-decoration-none">Support</a>
+    </div>
+
+    <p class="small mb-0"> 
+      © {{ now|date:"Y" }} All Rights Reserved — Created with ❤️ using Django
+    </p>
+  </div>
+</footer>

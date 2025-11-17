@@ -1,7 +1,44 @@
-{% with request.resolver_match.url_name as url_name %} 
-<div class="topnav">  
-    <a href="{% url "books.index" %}">Home</a>  
-    <a href="{% url "books.list_books" %}">List Books</a>  
-    <a href="{% url "books.aboutus" %}">About</a>  
-</div> 
-{% endwith %} 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-md">
+    <a class="navbar-brand fw-bold" href="/">
+      📚 My Library
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link{% if request.path == '/books/' %} active{% endif %}" href="/books/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.path == '/books/' %} active{% endif %}" href="/books/">Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.path == '/books/lab9/task2/' %} active{% endif %}" href="/books/lab9/task2/">Add Book</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item me-2 d-flex align-items-center text-white">
+          👤 {{ user.username }}
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-sm" href="/logout/">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item me-2">
+          <a class="btn btn-outline-light btn-sm" href="/login/">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-success btn-sm" href="/register/">Sign Up</a>
+        </li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </div>
+</nav>
